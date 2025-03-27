@@ -1,52 +1,38 @@
 {
-  "name": "tftdd-template",
+  "name": "stellar-phoenix",
   "version": "0.2.0",
-  "description": "Type-First Test-Driven Development (TFTDD) framework with AI integration",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "description": "Stellar Phoenix - A modular Next.js workspace with integrated back office services",
+  "private": true,
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
-    "docs": "typedoc",
-    "validate:types": "tsc --noEmit",
-    "ci": "npm run lint && npm run validate:types && npm run test && npm run docs",
-    "prepare": "husky"
+    "dev": "./scripts/dev-all.sh",
+    "build": "./scripts/build-all.sh",
+    "test": "./scripts/test-all.sh",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "type-check": "pnpm -r type-check",
+    "ci": "pnpm build && pnpm test && pnpm lint && pnpm type-check"
   },
   "keywords": [
-    "typescript",
-    "tdd",
-    "ai",
-    "testing"
+    "nextjs",
+    "monorepo",
+    "fullstack"
   ],
   "author": "",
   "license": "MIT",
-  "_comment": "⚠️ WARNING: NEVER EDIT DEPENDENCIES DIRECTLY! DO NOT manually specify package versions. Always install latest versions via command line using npm to maintain accuracy and security.",
-  "dependencies": {
-    "typedoc": "^0.27.9",
-    "zod": "^3.24.2"
-  },
-  "_WARNING": "⚠️ WARNING: DO NOT USE TYPESCRIPT MORE RECENT THAN ~5.7.0 FOR THE TIME BEING. i.e. npm i -D typescript@~5.7.0 via command line using npm to maintain accuracy and security.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "devDependencies": {
-    "@jest/globals": "^29.7.0",
-    "@stylistic/eslint-plugin": "^4.2.0",
     "@types/node": "^22.13.9",
     "eslint": "^9.21.0",
-    "eslint-config-prettier": "^10.0.2",
-    "eslint-plugin-jest": "^28.11.0",
-    "eslint-plugin-prettier": "^5.2.3",
-    "husky": "^9.1.7",
-    "jest": "^29.7.0",
     "prettier": "^3.5.3",
-    "ts-jest": "^29.2.6",
-    "ts-node": "^10.9.2",
     "typescript": "~5.7.0",
-    "typescript-eslint": "^8.26.0"
+    "husky": "^9.1.7"
   }
 }

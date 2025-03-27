@@ -52,7 +52,9 @@
         "reveal": "silent",
         "panel": "shared"
       },
-      "problemMatcher": ["$tsc"]
+      "problemMatcher": [
+        "$tsc"
+      ]
     },
     {
       "label": "Full CI Check",

@@ -2,6 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Python Service",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/python/src/main.py",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Debug Current Test",
@@ -24,7 +32,11 @@
       "request": "launch",
       "name": "Debug All Tests",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": ["--runInBand", "--config", "jest.config.js"],
+      "args": [
+        "--runInBand",
+        "--config",
+        "jest.config.js"
+      ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -34,7 +46,9 @@
       "name": "Debug TypeScript",
       "program": "${file}",
       "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
+      ],
       "sourceMaps": true,
       "smartStep": true,
       "internalConsoleOptions": "openOnSessionStart",

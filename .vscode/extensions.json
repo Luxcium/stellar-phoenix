@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    // Next.js + TypeScript
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "dsznajder.es7-react-js-snippets",
+    // Back Office Services
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    // Database & Infrastructure
+    "cweijan.vscode-postgresql-client2",
+    "ms-azuretools.vscode-docker",
+    // Testing
+    "orta.vscode-jest",
+    "ms-python.pytest",
+    // Shell Scripts
+    "timonwong.shellcheck",
+    "foxundermoon.shell-format",
+    // General Development
+    "github.vscode-pull-request-github",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig"
+  ]
+}
