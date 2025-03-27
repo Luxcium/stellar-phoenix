@@ -21,7 +21,6 @@
     // General Development
     "github.vscode-pull-request-github",
     "eamodio.gitlens",
-    "streetsidesoftware.code-spell-checker",
     "editorconfig.editorconfig"
   ]
 }
