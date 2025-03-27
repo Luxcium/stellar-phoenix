@@ -2,126 +2,159 @@
 
 ## Architecture Overview
 
-The TFTDD template follows a layered architecture that emphasizes type safety and testability:
+Stellar Phoenix follows a top-level modular architecture with multi-language support:
 
 ```mermaid
 flowchart TD
-    subgraph Types
-        T1[Core Types]
-        T2[Domain Types]
-        T3[Utility Types]
-        T4[Validators]
+    Root[Project Root] --> Components
+    Root --> Config
+    Root --> Scripts
+    Root --> Docs
+
+    subgraph Components
+        TS[TypeScript src/]
+        PY[Python/]
+        Next[Next.js*]
     end
 
-    subgraph Testing
-        Test1[Test Utilities]
-        Test2[Type Tests]
-        Test3[Unit Tests]
-        Test4[Integration Tests]
+    subgraph Config
+        VS[.vscode/]
+        ESLint[eslint.config.mjs]
+        TS_Config[tsconfig.json]
     end
 
-    subgraph Documentation
-        D1[Memory Bank]
-        D2[API Docs]
-        D3[Examples]
+    subgraph Scripts
+        Dev[dev-all.sh]
+        Build[build-all.sh]
+        Test[test-all.sh]
     end
 
-    subgraph AI
-        AI1[Type Generation]
-        AI2[Test Generation]
-        AI3[Doc Assistance]
+    subgraph Docs
+        MB[memory-bank/]
+        API[API Docs]
     end
 
-    Types --> Testing
-    Testing --> Documentation
-    AI --> Types
-    AI --> Testing
-    AI --> Documentation
+    Scripts --> Components
+    Config --> Components
+    Components --> Docs
 ```
 
 ## Key Components
 
-1. Type System
-   * Core type definitions
-   * Runtime type validators
-   * Type utilities
-   * Error handling types
+1. TypeScript Core
 
-2. Testing Framework
-   * Test runners
-   * Custom matchers
-   * Test utilities
-   * Coverage tools
+   - Business logic implementation
+   - Type definitions and validation
+   - Core utilities and helpers
+   - Error handling patterns
 
-3. Documentation System
-   * Memory Bank
-   * API documentation
-   * Example code
-   * Development guides
+2. Python Services
 
-4. AI Integration
-   * Code generation
-   * Test assistance
-   * Documentation help
+   - Service implementation
+   - Test infrastructure (pytest)
+   - Development tools (black, flake8)
+   - Package management
 
-## Component Relationships
+3. Development Environment
+
+   - VSCode workspace configuration
+   - Multi-language debugging
+   - Shared development scripts
+   - Task automation
+
+4. Documentation
+   - Memory Bank system
+   - API documentation
+   - Development guides
+   - Multi-language examples
+
+## Component Integration
 
 ```mermaid
 flowchart LR
-    subgraph Core
-        Types --> Validation
-        Validation --> ErrorHandling
-        ErrorHandling --> Types
+    subgraph Development
+        Scripts[Shell Scripts] --> TS[TypeScript]
+        Scripts --> PY[Python]
+        VS[VSCode] --> Debug[Debugging]
+        Debug --> TS
+        Debug --> PY
     end
 
     subgraph Testing
-        TestUtils --> Types
-        Types --> TypeTests
-        Implementation --> UnitTests
+        TS_Test[Jest] --> TS
+        PY_Test[pytest] --> PY
+        Coverage[Coverage Reports] --> TS_Test
+        Coverage --> PY_Test
     end
 
     subgraph Documentation
-        Types --> ApiDocs
-        Implementation --> Examples
-        Architecture --> MemoryBank
-    end
-
-    subgraph AI
-        Types --> Generation
-        Testing --> Assistance
-        Documentation --> Enhancement
+        TS --> TS_Docs[TypeDoc]
+        PY --> PY_Docs[API Docs]
+        TS_Docs --> MB[Memory Bank]
+        PY_Docs --> MB
     end
 ```
 
-## Design Patterns
+## Development Patterns
 
-1. Type-First Patterns
-   * Result Type Pattern
+1. Workspace Organization
 
-   ```typescript
-   type Result<T, E = Error> = 
-     | { success: true; value: T }
-     | { success: false; error: E };
+   ```
+   /                  # Project root
+   ├── src/           # TypeScript source
+   ├── python/        # Python services
+   ├── scripts/       # Shell scripts
+   ├── .vscode/       # IDE configuration
+   └── docs/          # Documentation
    ```
 
-   * Type Validator Pattern
+2. Script Patterns
 
-   ```typescript
-   interface TypeValidator<T> {
-     validate(input: unknown): Result<T>;
-     schema: z.ZodType<T>;
+   ```bash
+   # Development script pattern
+   #!/bin/bash
+   set -e
+
+   # Error handling
+   handle_error() {
+     echo "Error: Line $1"
+     exit 1
+   }
+   trap 'handle_error $LINENO' ERR
+
+   # Component execution
+   start_component() {
+     echo "Starting $1..."
+     cd "$2"
+     eval "$3"
+     cd ..
    }
    ```
 
-   * Type Guard Pattern
+3. Testing Pattern
 
    ```typescript
-   function isSuccess<T>(result: Result<T>): result is Success<T> {
-     return result.success === true;
-   }
+   // TypeScript test pattern
+   import { describe, it, expect } from '@jest/globals';
+
+   describe('Component', () => {
+     it('should behave correctly', () => {
+       expect(result).toBeDefined();
+     });
+   });
    ```
 
-2. Problem Management Pattern
+   ```python
+   # Python test pattern
+   import pytest
+
+   def test_component():
+       """Test component behavior"""
+       result = component.execute()
+       assert result is not None
+   ```
+
+4. Problem Management Pattern
 
    ```mermaid
    flowchart TD
@@ -136,7 +169,7 @@ flowchart LR
      Resolve --> PostCheck
    ```
 
-   * Pre-Modification Check
+   - Pre-Modification Check
 
      ```typescript
      // Example problem tracking
@@ -150,19 +183,20 @@ flowchart LR
      }
      ```
 
-   * Problem Resolution Priority
+   - Problem Resolution Priority
      1. Type safety (TypeScript)
      2. Test integrity (Jest)
      3. Code style (ESLint)
      4. Documentation (Markdown)
 
-3. Testing Patterns
-   * Test-Driven Development Pattern
+5. Testing Patterns
+
+   - Test-Driven Development Pattern
 
    ```typescript
    // 1. Write test first
    import { describe, expect, it } from '@jest/globals';
-   
+
    describe('User', () => {
      it('should validate email format', () => {
        const result = validateEmail('test@example.com');
@@ -171,7 +205,7 @@ flowchart LR
    });
    ```
 
-   * Type Test Pattern with Strict Safety
+   - Type Test Pattern with Strict Safety
 
    ```typescript
    describe('Type Tests', () => {
@@ -184,28 +218,35 @@ flowchart LR
    });
    ```
 
-   * Test Factory Pattern with Type Guarantees
+   - Test Factory Pattern with Type Guarantees
 
    ```typescript
    function createTestUser(): User {
      return {
        id: generateId(),
        name: 'Test User',
-       email: 'test@example.com'
+       email: 'test@example.com',
      };
    }
    ```
 
-4. Documentation Patterns
-   * Memory Bank Pattern
+6. Documentation Patterns
+
+   - Memory Bank Pattern
 
    ```markdown
    # Component Documentation
+
    ## Overview
+
    [Component description]
+
    ## Design Decisions
+
    [Key decisions and rationale]
+
    ## Usage Examples
+
    [Code examples]
    ```
 
@@ -243,91 +284,98 @@ flowchart LR
 
 ## Key Technical Decisions
 
-1. Type System
-   * Use TypeScript strict mode
-   * Implement Result type for error handling
-   * Use Zod for runtime validation
-   * Generate type documentation
+1. Project Structure
 
-2. Testing
-   * Jest with @jest/globals for type-safe testing
-   * TDD workflow with tests before implementation
-   * Pre-commit test execution via Husky
-   * Custom type testing utilities with strict safety
-   * Test factory patterns with full type coverage
-   * Automated coverage checks and isolatedModules
+   - Top-level component organization
+   - Language-specific tooling
+   - Shared development scripts
+   - Unified debugging experience
 
-3. Documentation
-   * Memory Bank for project context
-   * TypeDoc for API documentation
-   * Markdown for documentation
-   * Mermaid for diagrams
+2. Development Environment
 
-4. Development Environment
-   * VSCode as primary IDE
-   * ESLint + Prettier for formatting
-   * Automated task running
-   * Debug configurations
+   - VSCode as primary IDE
+   - Multi-language support
+   - Integrated debugging
+   - Automated workflows
+
+3. Testing Strategy
+
+   - Language-specific test runners
+   - Unified coverage reporting
+   - Automated test execution
+   - Cross-language integration tests
+
+4. Documentation
+   - Memory Bank as source of truth
+   - API documentation per language
+   - Shared development guides
+   - Unified workspace docs
 
 ## System Boundaries
 
 1. Internal Systems
-   * Type system
-   * Test framework
-   * Documentation generator
-   * Development tools
+
+   - Type system
+   - Test framework
+   - Documentation generator
+   - Development tools
 
 2. External Systems
-   * Version control
-   * Package manager
-   * CI/CD pipeline
-   * IDE extensions
+   - Version control
+   - Package manager
+   - CI/CD pipeline
+   - IDE extensions
 
 ## Non-Functional Requirements
 
-1. Performance
-   * Fast type checking
-   * Quick test execution
-   * Efficient documentation generation
+1. Development Experience
+
+   - Quick setup process
+   - Unified debugging experience
+   - Consistent code style
+   - Automated workflows
 
 2. Maintainability
-   * Clear code structure
-   * Comprehensive documentation
-   * Automated formatting
-   * Type safety
-   * Proactive problem management
+
+   - Clear component boundaries
+   - Comprehensive documentation
+   - Automated formatting
+   - Language-specific best practices
 
 3. Reliability
-   * Strong type guarantees
-   * Comprehensive tests
-   * Error handling
-   * Validation checks
-   * Pre/post modification checks
+
+   - Strong testing coverage
+   - Comprehensive error handling
+   - Validated deployment process
+   - Regular dependency updates
 
 4. Scalability
-   * Modular architecture
-   * Extensible patterns
-   * Reusable components
-   * Consistent problem tracking
+   - Modular architecture
+   - Language-agnostic interfaces
+   - Clear integration points
+   - Future remote capabilities
 
-## Technical Debt
+## Technical Debt Items
 
-Current technical debt items:
+1. Development Environment
 
-1. Type System
-   * Additional type utilities needed
-   * More type testing patterns
-   * Enhanced error types
+   - Container configurations needed
+   - Additional development scripts
+   - Enhanced debugging configs
+   - IDE extensions setup
 
-2. Testing
-   * More test helpers
-   * Additional matchers
-   * Performance testing
+2. Testing Infrastructure
+
+   - Cross-language testing tools
+   - Integration test framework
+   - Performance benchmarks
+   - Coverage thresholds
 
 3. Documentation
-   * More examples needed
-   * Additional diagrams
-   * Usage patterns
+   - Service API documentation
+   - Integration guides
+   - Deployment procedures
+   - Monitoring setup
 
 ---
 

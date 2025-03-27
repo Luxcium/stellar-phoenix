@@ -3,43 +3,61 @@
 ## Technology Stack
 
 1. Core Technologies
-   * TypeScript 5.3+
-   * Node.js 20+
-   * npm/yarn package management
+
+   - TypeScript 5.3+
+   - Node.js 20+
+   - Python 3.11+
+   - pnpm for workspace management
 
 2. Testing Technologies
-   * Jest with @jest/globals for type-safe testing
-   * ts-jest for TypeScript support with isolatedModules
-   * Test-Driven Development (TDD) workflow
-   * Husky pre-commit test hooks
-   * Custom type testing utilities
-   * Jest code coverage
-   * [Jest](https://jestjs.io/docs/getting-started#using-typescript)
-   * [ts-jest](https://kulshekhar.github.io/ts-jest/docs/)
 
-3. Type System
-   * TypeScript strict mode
-   * Zod for runtime validation
-   * Custom type utilities
-   * Type documentation tools
-   * [TypeScript](https://www.typescriptlang.org/)
-   * [Zod](https://github.com/colinhacks/zod)
+   - JavaScript/TypeScript:
+     - Jest with @jest/globals for type-safe testing
+     - ts-jest for TypeScript support
+     - Coverage reporting
+   - Python:
+     - pytest for testing
+     - pytest-cov for coverage
+     - pytest-asyncio for async testing
+   - Common:
+     - Pre-commit hooks via Husky
+     - Unified coverage reporting
+     - Cross-language test execution
+
+3. Type Safety
+
+   - TypeScript:
+     - Strict mode enabled
+     - Zod for runtime validation
+     - Type documentation tools
+   - Python:
+     - Type hints required
+     - mypy for static type checking
+     - pydantic for validation
 
 4. Code Quality
-   * Modern ESLint flat configuration
-   * @stylistic/eslint-plugin for consistent style
-   * Prettier code formatting
-   * Automated type checking
-   * Test coverage requirements
+
+   - JavaScript/TypeScript:
+     - ESLint flat configuration
+     - Prettier formatting
+     - @stylistic/eslint-plugin
+   - Python:
+     - black for formatting
+     - flake8 for linting
+     - isort for import sorting
+   - Common:
+     - EditorConfig
+     - Git hooks
+     - Coverage thresholds
 
 5. Documentation Tools
-   * TypeDoc for API docs
-   * Markdown documentation
-   * Mermaid for diagrams
-   * Memory Bank system
-   * [TSDoc](https://tsdoc.org/)
-   * [TypeDoc](https://typedoc.org/)
-   * [Cline Memory Bank](https://docs.cline.bot/improving-your-prompting-skills/custom-instructions-library/cline-memory-bank)
+   - TypeDoc for API docs
+   - Markdown documentation
+   - Mermaid for diagrams
+   - Memory Bank system
+   - [TSDoc](https://tsdoc.org/)
+   - [TypeDoc](https://typedoc.org/)
+   - [Cline Memory Bank](https://docs.cline.bot/improving-your-prompting-skills/custom-instructions-library/cline-memory-bank)
 
 ## Development Environment
 
@@ -47,271 +65,308 @@
 
 The project includes a `.vscode` directory with standardized configuration:
 
-* `settings.json`
-  * Enforces consistent code formatting
-  * Configures TypeScript settings
-  * Sets up testing environment
-  * Manages workspace settings
+- `settings.json`
 
-* `extensions.json`
-  * Required Extensions:
-    * dbaeumer.vscode-eslint: TypeScript/JavaScript linting
-    * esbenp.prettier-vscode: Code formatting
-    * orta.vscode-jest: Jest test integration
-    * davidanson.vscode-markdownlint: Markdown linting
-    * yzhang.markdown-all-in-one: Markdown support
-    * streetsidesoftware.code-spell-checker: Spell checking
-    * eamodio.gitlens: Git integration
-    * ms-vsliveshare.vsliveshare: Live collaboration
+  - Enforces consistent code formatting
+  - Configures TypeScript settings
+  - Sets up testing environment
+  - Manages workspace settings
 
-* `launch.json`
-  * Debug configurations for:
-    * Current test file
-    * All tests
-    * TypeScript debugging
+- `extensions.json`
 
-* `tasks.json`
-  * Memory bank verification
-  * Documentation generation
-  * Test running
-  * Build process
-  * Full CI check
+  - Required Extensions:
+    - dbaeumer.vscode-eslint: TypeScript/JavaScript linting
+    - esbenp.prettier-vscode: Code formatting
+    - orta.vscode-jest: Jest test integration
+    - davidanson.vscode-markdownlint: Markdown linting
+    - yzhang.markdown-all-in-one: Markdown support
+    - streetsidesoftware.code-spell-checker: Spell checking
+    - eamodio.gitlens: Git integration
+    - ms-vsliveshare.vsliveshare: Live collaboration
+
+- `launch.json`
+
+  - Debug configurations for:
+    - Current test file
+    - All tests
+    - TypeScript debugging
+
+- `tasks.json`
+  - Memory bank verification
+  - Documentation generation
+  - Test running
+  - Build process
+  - Full CI check
 
 ### Project Structure
 
 ```text
-tftdd-template/
-├── src/
-│   ├── types/
-│   │   ├── core/      # Core type definitions
-│   │   └── utils/     # Type utilities
-│   └── index.ts       # Main entry point
-├── tests/
-│   ├── types/         # Type tests
-│   └── utils/         # Test utilities
-├── docs/
-│   ├── api/           # Generated API docs
-│   └── examples/      # Usage examples
-└── memory-bank/       # Project documentation
+stellar-phoenix/
+├── src/               # TypeScript source code
+│   ├── types/           # Type definitions
+│   ├── core/            # Core logic
+│   └── utils/           # Utilities
+├── python/            # Python services
+│   ├── src/             # Python source code
+│   └── tests/           # Python tests
+├── scripts/           # Shell scripts
+│   ├── dev-all.sh       # Development script
+│   ├── build-all.sh     # Build script
+│   └── test-all.sh      # Test script
+├── docs/             # Documentation
+│   ├── api/            # API documentation
+│   └── examples/       # Usage examples
+└── memory-bank/      # Project context
 ```
 
 ## Build Process
 
-1. Development Build
+1. Development
 
    ```bash
-   npm run build
+   # Start all development servers
+   ./scripts/dev-all.sh
+
+   # Start specific components
+   pnpm build:ts:watch  # TypeScript watch mode
+   cd python && python src/main.py  # Python service
    ```
 
-   * TypeScript compilation
-   * Type generation
-   * Source maps
-
-2. Test Build
+2. Testing
 
    ```bash
-   npm test
+   # Run all tests
+   ./scripts/test-all.sh
+
+   # Component-specific tests
+   pnpm test  # TypeScript tests
+   cd python && pytest  # Python tests
    ```
 
-   * Jest test execution
-   * Coverage reporting
-   * Type validation
-
-3. Documentation Build
+3. Building
 
    ```bash
-   npm run docs
+   # Build all components
+   ./scripts/build-all.sh
+
+   # Component-specific builds
+   pnpm build  # TypeScript build
+   cd python && python -m build  # Python package
    ```
 
-   * TypeDoc generation
-   * Memory Bank validation
-   * Example verification
-
-4. CI Build
+4. Documentation
 
    ```bash
-   npm run ci
-   ```
+   # Generate all documentation
+   pnpm docs
 
-   * Linting
-   * Type checking
-   * Testing
-   * Documentation
+   # Run specific generators
+   pnpm typedoc  # TypeScript API docs
+   cd python && pdoc src  # Python API docs
+   ```
 
 ## Deployment Process
 
 1. Local Development
-   * Clone repository
-   * Install dependencies
-   * Run development build
-   * Start development server
+
+   - Clone repository
+   - Install dependencies
+   - Run development build
+   - Start development server
 
 2. Continuous Integration
-   * Run automated tests
-   * Check code quality
-   * Generate documentation
-   * Verify memory bank
+
+   - Run automated tests
+   - Check code quality
+   - Generate documentation
+   - Verify memory bank
 
 3. Package Publishing
-   * Version bump
-   * Build package
-   * Generate documentation
-   * Publish to npm
+   - Version bump
+   - Build package
+   - Generate documentation
+   - Publish to npm
 
 ## Testing Strategy
 
 1. Unit Testing
-   * Test-Driven Development (TDD) first approach
-   * Jest with @jest/globals for type safety
-   * Pre-commit test execution via Husky
-   * TypeScript support with isolatedModules
-   * Coverage reporting and enforcement
+
+   - Test-Driven Development (TDD) first approach
+   - Jest with @jest/globals for type safety
+   - Pre-commit test execution via Husky
+   - TypeScript support with isolatedModules
+   - Coverage reporting and enforcement
 
 2. Type Testing
-   * No usage of 'any' in test files
-   * Custom type assertions with strict checking
-   * Type compatibility verification
-   * Generic type testing
-   * Type inference validation
+
+   - No usage of 'any' in test files
+   - Custom type assertions with strict checking
+   - Type compatibility verification
+   - Generic type testing
+   - Type inference validation
 
 3. Documentation Testing
-   * Example code verification
-   * Memory Bank validation
-   * API documentation checks
-   * Markdown linting
+
+   - Example code verification
+   - Memory Bank validation
+   - API documentation checks
+   - Markdown linting
 
 4. Integration Testing
-   * Component integration
-   * Type system validation
-   * Documentation verification
-   * Tool chain testing
+   - Component integration
+   - Type system validation
+   - Documentation verification
+   - Tool chain testing
 
 ## Dependencies
 
-### Production Dependencies
+### TypeScript Dependencies
 
-* `typescript`: TypeScript compiler and language service
-* `zod`: Runtime type validation
-* `typedoc`: API documentation generation
+- Production:
 
-### Development Dependencies
+  - `typescript`: TypeScript compiler
+  - `zod`: Runtime validation
+  - `pnpm`: Package management
 
-* `jest`: Test runner
-* `ts-jest`: TypeScript support for Jest
-* `@jest/globals`: Type-safe Jest globals
-* `husky`: Git hooks for pre-commit test execution
-* `eslint`: Code linting
-* `prettier`: Code formatting
-* `@typescript-eslint/*`: TypeScript ESLint integration
+- Development:
+  - `jest`: Testing framework
+  - `ts-jest`: TypeScript testing
+  - `eslint`: Code linting
+  - `prettier`: Code formatting
+
+### Python Dependencies
+
+- Production:
+
+  - `python-dotenv`: Environment variables
+  - `pydantic`: Data validation
+  - `aiofiles`: Async file operations
+
+- Development:
+  - `pytest`: Testing framework
+  - `black`: Code formatting
+  - `flake8`: Code linting
+  - `mypy`: Type checking
 
 ## Configuration
 
 1. TypeScript Configuration
-   * Strict mode enabled
-   * Source maps
-   * Declaration files
-   * Path aliases
+
+   - Strict mode enabled
+   - Source maps
+   - Declaration files
+   - Path aliases
 
 2. ESLint Configuration
-   * Flat configuration system (eslint.config.mjs)
-   * TypeScript and Stylistic rules
-   * Jest plugin integration
-   * Prettier compatibility
-   * Custom rules
+
+   - Flat configuration system (eslint.config.mjs)
+   - TypeScript and Stylistic rules
+   - Jest plugin integration
+   - Prettier compatibility
+   - Custom rules
 
 3. Jest Configuration
-   * TypeScript support
-   * Coverage settings
-   * Custom matchers
-   * Test environment
+
+   - TypeScript support
+   - Coverage settings
+   - Custom matchers
+   - Test environment
 
 4. VSCode Configuration
-   * Editor settings
-   * Extension recommendations
-   * Debug configurations
-   * Task definitions
+   - Editor settings
+   - Extension recommendations
+   - Debug configurations
+   - Task definitions
 
 ## Technical Constraints
 
 1. Language Constraints
-   * TypeScript strict mode required
-   * ESLint rules enforcement
-   * Code formatting standards
-   * Documentation requirements
+
+   - TypeScript strict mode required
+   - ESLint rules enforcement
+   - Code formatting standards
+   - Documentation requirements
 
 2. Testing Constraints
-   * Test-Driven Development (TDD) mandatory
-   * Tests must be written before implementation
-   * Pre-commit test execution required
-   * No usage of 'any' in test files
-   * Minimum coverage threshold
-   * Required type tests
-   * Documentation tests
-   * Performance benchmarks
+
+   - Test-Driven Development (TDD) mandatory
+   - Tests must be written before implementation
+   - Pre-commit test execution required
+   - No usage of 'any' in test files
+   - Minimum coverage threshold
+   - Required type tests
+   - Documentation tests
+   - Performance benchmarks
 
 3. Documentation Constraints
-   * Memory Bank updates
-   * API documentation
-   * Example code
-   * Diagram standards
+
+   - Memory Bank updates
+   - API documentation
+   - Example code
+   - Diagram standards
 
 4. Development Constraints
-   * VSCode as primary IDE
-   * Git version control
-   * npm package management
-   * Node.js environment
+   - VSCode as primary IDE
+   - Git version control
+   - npm package management
+   - Node.js environment
 
 ## Version Control
 
 1. Repository Structure
-   * Source code
-   * Tests
-   * Documentation
-   * Configuration
+
+   - Source code
+   - Tests
+   - Documentation
+   - Configuration
 
 2. Branch Strategy
-   * main: Stable releases
-   * develop: Integration
-   * feature/*: Features
-   * fix/*: Bug fixes
+
+   - main: Stable releases
+   - develop: Integration
+   - feature/\*: Features
+   - fix/\*: Bug fixes
 
 3. Commit Standards
-   * Conventional commits
-   * Type-scoped changes
-   * Detailed descriptions
-   * Issue references
+   - Conventional commits
+   - Type-scoped changes
+   - Detailed descriptions
+   - Issue references
 
 ## Monitoring and Logging
 
 1. Development Monitoring
-   * TypeScript errors
-   * Test failures
-   * Linting issues
-   * Coverage reports
+
+   - TypeScript errors
+   - Test failures
+   - Linting issues
+   - Coverage reports
 
 2. Documentation Monitoring
-   * Memory Bank status
-   * API documentation
-   * Example verification
-   * Markdown validation
+
+   - Memory Bank status
+   - API documentation
+   - Example verification
+   - Markdown validation
 
 3. Build Monitoring
-   * Compilation errors
-   * Test results
-   * Documentation generation
-   * Package validation
+   - Compilation errors
+   - Test results
+   - Documentation generation
+   - Package validation
 
 ## AI Integration
 
 1. Test Generation
-   * Update AI algorithms to better understand the project's testing patterns
-   * Incorporate feedback loops to improve the generated tests over time
+
+   - Update AI algorithms to better understand the project's testing patterns
+   - Incorporate feedback loops to improve the generated tests over time
 
 2. Documentation Generation
-   * Enhance AI suggestions for documentation consistency
-   * Ensure AI-generated documentation aligns with project patterns
-   * [Cline AI Documentation](https://docs.cline.bot/)
-   * [Cline GitHub](https://github.com/cline/cline)
+   - Enhance AI suggestions for documentation consistency
+   - Ensure AI-generated documentation aligns with project patterns
+   - [Cline AI Documentation](https://docs.cline.bot/)
+   - [Cline GitHub](https://github.com/cline/cline)
 
 ---
 
