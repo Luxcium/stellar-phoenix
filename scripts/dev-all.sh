@@ -34,7 +34,8 @@ cd ..
 
 # Build and watch TypeScript
 echo "📦 Starting TypeScript build watch..."
-pnpm watch &
+# Using recursive flag to run script in all workspaces with a watch script
+pnpm -r --if-present run watch &
 
 # Wait for all background processes
 wait
