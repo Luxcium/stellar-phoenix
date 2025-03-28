@@ -1,0 +1,26 @@
+version: "1.0"
+
+# Import component configurations
+imports:
+  - config/gpu.yaml
+  - config/monitoring.yaml
+  - config/orchestration.yaml
+  - config/logging.yaml
+
+system:
+  name: "nexo-owl"
+  version: "1.0.0"
+  environment: "production"
+
+# Global settings
+global:
+  metrics_dir: "/tmp/metrics"
+  temp_dir: "/tmp/gpu-compute"
+  max_concurrent_tasks: 4
+  health_check_interval: 60  # seconds
+
+# Component integration settings
+integration:
+  shared_memory_path: "/dev/shm/gpu-compute"
+  ipc_mechanism: "unix_socket"
+  socket_path: "/tmp/gpu-compute.sock"

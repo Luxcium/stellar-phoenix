@@ -1,0 +1,331 @@
+# Special Instructions for Cline
+
+Here is a revised and **precise set of instructions** for **Cline** that avoids ambiguity, provides clear context, and aligns with all stated preferences and requirements.
+
+## Table of Contents
+
+- [Special Instructions for Cline](#special-instructions-for-cline)
+  - [Table of Contents](#table-of-contents)
+  - [Cline Instructions](#cline-instructions)
+  - [General Guidelines](#general-guidelines)
+  - [Linux Environment and System Requirements](#linux-environment-and-system-requirements)
+  - [Package Management and Environment Requirements](#package-management-and-environment-requirements)
+  - [Project Initialization](#project-initialization)
+  - [Code Conventions](#code-conventions)
+    - [JavaScript/TypeScript Standards](#javascripttypescript-standards)
+    - [Python Standards](#python-standards)
+    - [Shell Scripting Standards](#shell-scripting-standards)
+  - [Task Execution](#task-execution)
+  - [Modularity and Scalability](#modularity-and-scalability)
+    - [Structural Principles](#structural-principles)
+    - [Key Directories](#key-directories)
+  - [Error Handling](#error-handling)
+  - [Docker Container Usage](#docker-container-usage)
+  - [Optional Tooling for Consistency](#optional-tooling-for-consistency)
+  - [Maintenance Guidelines](#maintenance-guidelines)
+    - [Purpose](#purpose)
+    - [Maintenance Principles](#maintenance-principles)
+  - [Summary of Approach](#summary-of-approach)
+  - [Concurrent Instructions for GitHub Copilot and TypeScript](#concurrent-instructions-for-github-copilot-and-typescript)
+  - [Introduction](#introduction)
+  - [Basic Code Rules](#basic-code-rules)
+  - [Specific Coding Standards](#specific-coding-standards)
+  - [Documentation and Comments](#documentation-and-comments)
+  - [Integration of Tools and Dependencies](#integration-of-tools-and-dependencies)
+  - [NextJS Project Structure and Preferences](#nextjs-project-structure-and-preferences)
+    - [Core Principles](#core-principles)
+    - [NextJS Version and Router](#nextjs-version-and-router)
+    - [Directory Structure](#directory-structure)
+    - [Preference Management](#preference-management)
+    - [Dynamic Updates](#dynamic-updates)
+  - [Conclusion](#conclusion)
+
+## Cline Instructions
+
+This document serves as the comprehensive instruction set for AI agent operation, meticulously organized to provide clear, actionable guidance.
+
+## General Guidelines
+
+- **Context-Specific Outputs:** Adapt outputs to respect the specific context of the current programming language or framework.
+- **Conciseness and Clarity:** Use precise, direct language to eliminate ambiguity.
+- **Adaptive Intelligence:** Interpret instructions with nuanced understanding while maintaining strict adherence to core principles.
+
+## Linux Environment and System Requirements
+
+- **Operating System:** Fedora Linux.
+- **Package Management:** `dnf` (aliased to `dnf5`).
+- **System Integration:**
+  - Follow Fedora filesystem hierarchy.
+  - Respect SELinux contexts.
+  - Use standard Fedora configuration locations.
+  - Leverage systemd for service management.
+- **Container Builds:** Use Fedora-based images when possible.
+- **System Utilities:** Use Fedora-standard paths and conventions.
+
+## Package Management and Environment Requirements
+
+- Utilize npm exclusively for Node.js and TypeScript projects.
+- All scripts and container environments must run on Node.js v22 or later.
+- Dependency management must rely on the npm lock file for version control.
+- Command-line execution is preferred for all package-related operations.
+
+## Project Initialization
+
+- Use language-specific initialization tools:
+  - Node.js/TypeScript: `npm init`.
+  - Python: `pip` or `poetry`.
+  - PHP: `composer`.
+- Ensure configuration aligns with best practices for the specific ecosystem.
+
+## Code Conventions
+
+❗ Always use Docker containers for development and testing to ensure consistent and reproducible environments.
+
+### JavaScript/TypeScript Standards
+
+- **Strict TypeScript Configuration:**
+  - Enable `"strict"`, `"noImplicitAny"`, `"noImplicitThis"`, `"alwaysStrict"`.
+- **Naming Conventions:**
+  - PascalCase for classes and types.
+  - camelCase for functions and variables.
+- **Export Strategy:**
+  - Prefer named exports.
+  - Avoid default exports.
+
+### Python Standards
+
+- Adhere to PEP 8 guidelines.
+- Use explicit, descriptive naming.
+- Prefer absolute import paths.
+
+### Shell Scripting Standards
+
+- Use POSIX-compliant syntax.
+- Include comprehensive comments.
+- Avoid hardcoded paths when possible.
+
+## Task Execution
+
+- Prioritize command-line tools for:
+  - Project initialization.
+  - Dependency management.
+  - Script execution.
+- Minimize direct file manipulation.
+- Maintain a non-destructive approach to existing resources.
+
+## Modularity and Scalability
+
+### Structural Principles
+
+- Separate concerns into distinct modules.
+- Use clear, meaningful directory structures.
+- Implement dependency injection.
+- Create clear architectural boundaries.
+
+### Key Directories
+
+- `src/`: Primary source code.
+- `tests/`: Testing infrastructure.
+- `utils/`: Shared utilities.
+- `configs/`: Configuration management.
+
+## Error Handling
+
+- Implement comprehensive input validation.
+- Use type assertions in TypeScript.
+- Create robust error management strategies.
+- Prevent unhandled exceptions.
+- Ensure data integrity through strict validation.
+
+## Docker Container Usage
+
+- Always ❗ run in a Docker container to ensure safety and resilience.
+- Use official and minimal Docker base images.
+- Adhere to least-privilege principles in containers.
+- Maintain ephemeral container instances for secure operation.
+
+## Optional Tooling for Consistency
+
+Optionally integrate Prettier, ESLint, or similar tools in your Docker-based development workflows. They can be configured either via npm in external projects or through Rush/Heft commands inside monorepo context, ensuring uniform code quality checks.
+
+While these tools simplify collaborative development, they remain non-compulsory and should be adapted to project-specific needs. Align them with the existing package management and container guidelines to maintain consistency and reliability.
+
+## Maintenance Guidelines
+
+### Purpose
+
+- Primary instruction repository.
+- Memory and preference management system.
+- Operational parameter definition.
+
+### Maintenance Principles
+
+1. **Periodic Review**
+   - Regular accuracy assessment.
+   - Update to reflect current best practices.
+
+2. **Update Methodology**
+   - Incremental modifications.
+   - Preserve existing information.
+   - Align with core ethical guidelines.
+
+3. **Documentation Standards**
+   - Maintain hierarchical structure.
+   - Consistent markdown formatting.
+   - Comprehensive navigation support.
+
+4. **Autonomous Decision Framework**
+   - Assess change impact.
+   - Consider long-term implications.
+   - Implement only high-value modifications.
+
+## Summary of Approach
+
+A dynamic, context-aware instruction set designed to provide flexible yet precise operational guidance across diverse programming environments.
+
+**Critical Directive**: Maintain absolute fidelity to documented principles while allowing intelligent, contextual interpretation.
+
+## Concurrent Instructions for GitHub Copilot and TypeScript
+
+This portion integrates Copilot configuration for optimal TypeScript navigation and code production, following strict markdown and TypeScript rules.
+
+## Introduction
+
+This guide helps ensure GitHub Copilot and other AI agents generate code that is easy to read, use, and maintain. By following these rules, the code remains simple, functional, and easily modifiable in the future, ensuring long-term quality and team understanding.
+
+## Basic Code Rules
+
+- **Keep It Simple:** Code should be easy to read and not overly complex.
+- **Consistency:** Always follow the same conventions throughout the codebase.
+- **Single Responsibility Principle:** Keep logic, data, and input/output in distinct components.
+- **Strict Typing in TypeScript:** Ensure reliability by catching issues early.
+- **Component Granularity:** Each code component serves a single purpose.
+- **Infrastructure Isolation:** Separate core business logic from infrastructure-related code.
+
+## Specific Coding Standards
+
+- **Barrel-Only Index Files:** Use `index.ts` files solely for module aggregation, prohibiting implementation logic.
+- **Naming and Export Conventions:** Use named exports; default exports are not allowed.
+- **Unused Declarations:** Explicitly handle or mark unused variables to maintain clean code.
+
+## Documentation and Comments
+
+- **Use TSDoc and TypeDoc:** Follow structured comments with key tags like `@param`, `@returns`, and `@example`.
+- **Comment Annotations:** Use annotations such as `// TODO`, `// FIXME`, and `// UNIMPLEMENTED`.
+
+## Integration of Tools and Dependencies
+
+- **Rush and npm Commands:** Follow specific commands for monorepo and non-monorepo environments.
+- **Optional Integration Tools:** Consider Prettier and ESLint for additional code consistency.
+
+## NextJS Project Structure and Preferences
+
+### Core Principles
+
+- Preserve all existing preferences and guidelines from other sections
+- Apply NextJS-specific rules only in NextJS project context
+- Accumulate user preferences dynamically during development sessions
+
+### NextJS Version and Router
+
+- Use Next.js 15+ exclusively
+- Implement App Router architecture
+- Strict TypeScript configuration maintained
+
+### Directory Structure
+
+```text
+src/
+├── app/                    # App Router pages and layouts
+│   ├── (auth)/            # Grouped auth routes
+│   ├── api/               # API routes
+│   └── layout.tsx         # Root layout
+├── components/
+│   ├── ui/               # Reusable UI components
+│   └── features/         # Feature-specific components
+├── lib/                  # Utility functions and shared logic
+├── styles/              # Global styles and CSS modules
+└── types/               # TypeScript type definitions
+```
+
+### Preference Management
+
+- Record and maintain user preferences within session context
+- Never remove or override existing preferences
+- Append new preferences with clear documentation
+- Consider impact before implementing changes
+- Flag conflicts between preferences for user review
+
+### Dynamic Updates
+
+- This section serves as a living document for NextJS preferences
+- New preferences should be added under appropriate subsections
+- Each preference must include:
+  - Context of implementation
+  - Impact assessment
+  - Compatibility notes
+
+## Conclusion
+
+This guide ensures that AI agents like Cline and Copilot produce consistent, high-quality code, enhancing readability and maintainability while adhering to best practices.
+
+---
+
+**Note:** This document represents a definitive operational blueprint. Modify with precision and consider potential impacts thoroughly.
+# Project Rules and Learnings
+
+## Development Server Management
+- Always verify server status before starting new one
+- Use `npm run dev` for standard Next.js development
+- Monitor terminal output for compilation status
+- Check for port conflicts (3000, 3001, etc.)
+
+## Hot Reload Best Practices
+- Make incremental changes to test hot reload
+- Watch terminal output for compilation success/failure
+- Check browser console for client-side errors
+- Keep dev tools network tab open for monitoring
+- Test UI changes with visual feedback (hover effects, transitions)
+- Verify Tailwind classes apply immediately
+- Use transition classes to validate CSS hot reloading
+- Monitor port availability and conflicts
+
+## Code Organization
+1. App Router Structure:
+   - src/app/layout.tsx for root layout
+   - src/app/page.tsx for main page
+   - src/app/globals.css for global styles
+
+2. Component Patterns:
+   - Use TypeScript for type safety
+   - Implement Readonly for props
+   - Follow React Server Component conventions
+
+## Tailwind Integration
+- Include directives in globals.css
+- Configure content paths in tailwind.config.js
+- Use utility classes for styling
+- Follow mobile-first responsive design
+
+## Error Handling
+- Monitor terminal for build errors
+- Check browser console for runtime errors
+- Address TypeScript errors immediately
+- Follow error stack traces for debugging
+
+## Learning Points
+1. Development Setup:
+   - Prefer standard Next.js dev server over Turbopack for stability
+   - Monitor port usage for server conflicts
+   - Keep documentation updated in memory-bank
+
+2. Error Prevention:
+   - Always include metadata in layout.tsx
+   - Ensure proper TypeScript configuration
+   - Validate Tailwind setup with test styles
+
+## Memory Bank Management
+- Update activeContext.md for current status
+- Document new patterns in systemPatterns.md
+- Track progress in progress.md
+- Keep technical details in techContext.md

@@ -1,0 +1,10 @@
+{
+  "default": true,
+  "MD013": false,
+  "customRules": {
+    "heading-content-required": {
+      "path": ".vscode/rules/heading-content-required.js"
+    }
+  },
+  "heading-content-required": true
+}

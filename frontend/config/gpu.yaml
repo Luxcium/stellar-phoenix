@@ -1,0 +1,22 @@
+gpu:
+  validation:
+    test_matrix_size: [10, 10]
+    min_memory_required: 4  # GB
+    retry_attempts: 3
+    retry_delay: 5  # seconds
+  
+  computation:
+    default_matrix_size: [5000, 5000]
+    precision: "float32"
+    batch_enabled: true
+    batch_size: 64
+    
+  cuda:
+    min_version: "11.0"
+    required_extensions: ["cudnn", "cublas"]
+    fallback_to_cpu: false
+
+  error_handling:
+    log_cuda_errors: true
+    memory_threshold_warning: 0.85  # 85% usage triggers warning
+    temperature_threshold: 80  # Celsius

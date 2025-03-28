@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --primary-color: 59, 130, 246;
+  --secondary-color: 107, 114, 128;
+  --accent-color: 124, 58, 237;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 17, 24, 39;
+    --background-end-rgb: 31, 41, 55;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold mb-4;
+  }
+  h2 {
+    @apply text-2xl font-semibold mb-3;
+  }
+  h3 {
+    @apply text-xl font-medium mb-2;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-blue-500 text-white hover:bg-blue-600;
+  }
+  .btn-secondary {
+    @apply btn bg-gray-500 text-white hover:bg-gray-600;
+  }
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6;
+  }
+  .progress-bar {
+    @apply h-full bg-blue-500 transition-all duration-300;
+  }
+  .width-60 {
+    width: 60%;
+  }
+
+  /* Upload progress bar styles */
+  .progress-bar-error {
+    @apply h-full transition-all duration-300 bg-red-500;
+  }
+  .progress-bar-complete {
+    @apply h-full transition-all duration-300 bg-green-500;
+  }
+  .progress-bar-uploading {
+    @apply h-full transition-all duration-300 bg-blue-500;
+  }
+  
+  /* Width classes for dynamic percentages */
+  .progress-width {
+    width: var(--progress-width);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    /* Using a more compatible approach instead of text-wrap: balance */
+    max-width: 65ch;
+    text-align: justify;
+  }
+  .scrollbar-hide {
+    /* Using a cross-browser compatible approach */
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
