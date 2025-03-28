@@ -106,3 +106,27 @@ model CustomMetadata {
   @@id([imageId, key])
   @@index([imageId])
 }
+
+// Data Sources for directory management
+model DataSource {
+  id        String   @id @default(uuid())
+  alias     String   @unique
+  path      String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  metadata  DataSourceMetadata[]
+}
+
+model DataSourceMetadata {
+  id           String     @id @default(uuid())
+  dataSource   DataSource @relation(fields: [dataSourceId], references: [id], onDelete: Cascade)
+  dataSourceId String
+  key          String
+  value        Json
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@unique([dataSourceId, key])
+  @@index([dataSourceId])
+}
