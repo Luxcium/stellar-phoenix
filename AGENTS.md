@@ -3,7 +3,7 @@
 This repository uses a "Memory Bank" system to store all project knowledge. Two roots exist:
 
 1. **memory-bank/** – documentation for the overall project (TypeScript, Python, etc.).
-2. **web/memory-bank/** – documentation specific to the Next.js web app.
+2. `web/memory-bank/` – documentation specific to the Next.js web app.
 
 When working in the main project, update files in **memory-bank/**. When modifying the Next.js application, update **web/memory-bank/**. Do not copy information between the two; keep context relevant to each root.
 
