@@ -1,12 +1,29 @@
+ 
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+ 
 generator client {
   provider = "prisma-client-js"
 }
 
+ 
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+}
+
+ 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
+ 
 model Image {
   id         Int      @id @default(autoincrement())
   fileName   String
@@ -17,4 +34,116 @@ model Image {
   status     String   @default("pending")
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+ 
+// Basic Image Information (Tier 1)
+model BasicImageInfo {
+  id            String         @id @default(uuid())
+  thumbnailPath String
+  filePath      String
+  fileSize      BigInt
+  hash          String
+  lastAccessed  DateTime       @default(now())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  metadata      ImageMetadata?
+  tags          ImageTag[]
+  groups        ImageGroup[]
+  customMetadata CustomMetadata[]
+
+  @@index([hash])
+  @@index([filePath])
+}
+
+// Image Metadata (Tier 2)
+model ImageMetadata {
+  id         String        @id @default(uuid())
+  width      Int?
+  height     Int?
+  format     String?
+  colorSpace String?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  basicInfo  BasicImageInfo @relation(fields: [id], references: [id], onDelete: Cascade)
+}
+
+// Tags for semantic labeling
+model Tag {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  createdAt DateTime   @default(now())
+  images    ImageTag[]
+}
+
+// Junction table for Image-Tag relationship
+model ImageTag {
+  image     BasicImageInfo @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  imageId   String
+  tag       Tag           @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  tagId     String
+  createdAt DateTime      @default(now())
+
+  @@id([imageId, tagId])
+  @@index([imageId])
+  @@index([tagId])
+}
+
+// Semantic groups for organizing images
+model SemanticGroup {
+  id          String       @id @default(uuid())
+  name        String       @unique
+  description String?
+  createdAt   DateTime     @default(now())
+  images      ImageGroup[]
+}
+
+// Junction table for Image-Group relationship
+model ImageGroup {
+  image       BasicImageInfo  @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  imageId     String
+  group       SemanticGroup   @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  groupId     String
+  confidence  Float          @default(1.0)
+  createdAt   DateTime       @default(now())
+
+  @@id([imageId, groupId])
+  @@index([imageId])
+  @@index([groupId])
+}
+
+// Custom metadata for extensibility
+model CustomMetadata {
+  image     BasicImageInfo @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  imageId   String
+  key       String
+  value     Json
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@id([imageId, key])
+  @@index([imageId])
+}
+
+// Data Sources for directory management
+model DataSource {
+  id        String   @id @default(uuid())
+  alias     String   @unique
+  path      String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  metadata  DataSourceMetadata[]
+}
+
+model DataSourceMetadata {
+  id           String     @id @default(uuid())
+  dataSource   DataSource @relation(fields: [dataSourceId], references: [id], onDelete: Cascade)
+  dataSourceId String
+  key          String
+  value        Json
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@unique([dataSourceId, key])
+  @@index([dataSourceId])
+ 
 }

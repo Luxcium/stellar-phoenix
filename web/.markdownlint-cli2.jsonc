@@ -1,0 +1,11 @@
+{
+  "config": {
+    "default": true,
+    "MD013": false
+  },
+  "customRules": [
+    ".vscode/rules/heading-content-required.js"
+  ],
+  "globs": ["**/*.md"],
+  "ignores": ["**/node_modules/**"]
+}

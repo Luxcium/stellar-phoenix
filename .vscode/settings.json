@@ -7,28 +7,72 @@
   ],
   "editor.tabSize": 2,
   "editor.suggestSelection": "first",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   // Code Actions
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll": "explicit",
-    "source.organizeImports": "never"
+    "source.organizeImports": "explicit",
+    "source.fixAll.stylelint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.fixAll.javascript": "explicit",
+    "source.fixAll.json": "explicit",
+    "source.fixAll.markdown": "explicit",
+    "source.fixAll.css": "explicit",
+    "source.fixAll.less": "explicit",
+    "source.fixAll.scss": "explicit",
+    "source.fixAll.html": "explicit"
   },
+  // ESLint Configuration
   "eslint.validate": [
     "javascript",
     "typescript"
   ],
+  // TypeScript/JavaScript Configuration
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggestionActions.enabled": true,
+  "typescript.format.enable": false,
+  "typescript.surveys.enabled": false,
+  "typescript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
   // Jest Configuration
   "jest.runMode": "watch",
-  "typescript.preferences.importModuleSpecifier": "non-relative",
+  // Language-specific settings
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit"
+    }
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescript][javascript][typescriptreact][javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "[python]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
   },
   // Files Configuration
   "files.exclude": {
@@ -62,32 +106,40 @@
   "python.linting.flake8Enabled": true,
   "python.testing.pytestEnabled": true,
   "python.analysis.typeCheckingMode": "basic",
-  "[python]": {
-    "editor.defaultFormatter": null,
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    }
-  },
-  // TypeScript/JavaScript Configuration
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.suggestionActions.enabled": true,
-  "typescript.format.enable": false,
-  "typescript.surveys.enabled": false,
-  "[typescript][javascript][typescriptreact][javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  // Shell Script Configuration
-  // "[shellscript]": {
-  //   "editor.defaultFormatter": "foxundermoon.shell-format",
-  //   "editor.formatOnSave": true
-  // },
-  // Documentation
+  // Markdown Configuration
   "markdown.extension.toc.updateOnSave": true,
+  "markdownlint.config": {
+    "default": true,
+    "MD013": false
+  },
+  "markdownlint.customRules": [
+    ".vscode/rules/heading-content-required.js"
+  ],
   // Git Integration
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
-  "git.autofetch": true
+  "git.autofetch": true,
+  // Frontend Development
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "css.validate": false,
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "cva\\(([^)]*)\\)",
+      "[\"'`]([^\"'`]*).*?[\"'`]"
+    ]
+  ],
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  // Commented settings - uncomment if needed
+  // "css.lint.unknownAtRules": "ignore",
+  // "less.lint.unknownAtRules": "ignore",
+  // "scss.lint.unknownAtRules": "ignore",
+  // "[shellscript]": {
+  //   "editor.defaultFormatter": "foxundermoon.shell-format",
+  //   "editor.formatOnSave": true
+  // }
 }

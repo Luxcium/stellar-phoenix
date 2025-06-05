@@ -1,0 +1,6 @@
+Task,Responsible Party,Secondary Party
+Automated Provisioning,AI Agent,System Admin
+Configuration & Setup,System Admin,User
+Execution of Workload,AI Agent,User
+Monitoring & Validation,System Admin,AI Agent
+Cleanup & Reporting,AI Agent,User

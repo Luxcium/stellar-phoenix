@@ -1,0 +1,33 @@
+{
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "proseWrap": "never",
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": [
+        "./*.test.ts",
+        "./*.spec.ts"
+      ],
+      "options": {
+        "printWidth": 120,
+        "proseWrap": "never"
+      }
+    }
+  ],
+    "plugins": [
+    "prettier-plugin-organize-attributes",
+    "prettier-plugin-packagejson",
+    "prettier-plugin-sh",
+    "prettier-plugin-tailwindcss"
+  ]
+}
