@@ -16,6 +16,7 @@
 - Added npm scripts for different development scenarios (watch, dev:watch, etc.)
 - Implemented Memory Bank monitoring for continuous context awareness
 - Documented development workflow in system patterns
+- Added basic login and registration pages with Prisma API
 
 ## Recent Changes
 
