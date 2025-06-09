@@ -16,6 +16,7 @@ Initial setup phase - Core infrastructure and type system foundation established
    * VSCode workspace optimized
    * Build process established
    * Documentation generation setup
+   * Added `apps/my-app` Next.js template
 
 2. Type System
    * Result type implemented with clear success/failure patterns
