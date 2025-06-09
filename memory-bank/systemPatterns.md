@@ -1,5 +1,33 @@
 # System Patterns
 
+## Quick Reference: Development Environment
+
+**🚨 CRITICAL: Always use automated scripts for dependency management**
+
+### Essential Scripts Location
+
+- **Setup Environment**: `/scripts/setup-dev-env.sh` - Run on fresh clone
+- **Add Dependencies**: `/scripts/add-package.sh [dev|prod] <packages>` - Never manually edit package.json
+- **Environment Detection**: `/scripts/detect-env.sh` - Auto-detects pnpm/yarn/npm
+
+### Development Guidelines
+
+- **📋 Full Documentation**: `/memory-bank/devEnvironmentSetup.md`
+- **🔧 Package Manager**: Auto-detected (pnpm preferred for monorepo)
+- **❌ Never**: Manually set versions in package.json
+- **✅ Always**: Use `./scripts/add-package.sh dev @types/jest` instead
+
+### Fresh Clone Setup
+
+```bash
+# First time setup
+./scripts/setup-dev-env.sh
+
+# Add dependencies
+./scripts/add-package.sh dev @types/jest typescript
+./scripts/add-package.sh prod express --workspace=backend
+```
+
 ## Architecture Overview
 
 Stellar Phoenix follows a top-level modular architecture with multi-language support:
