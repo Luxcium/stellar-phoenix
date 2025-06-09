@@ -54,6 +54,7 @@ Project restructuring and workspace configuration:
    - Clear component separation
    - Consistent file organization
    - Development script automation
+   - Added new Next.js app under `apps/my-app`
 
 ## Project Intelligence Growth
 

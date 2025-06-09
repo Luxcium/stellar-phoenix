@@ -10,11 +10,16 @@ flowchart TD
     Root --> Config
     Root --> Scripts
     Root --> Docs
+    Root --> Apps
 
     subgraph Components
         TS[TypeScript src/]
         PY[Python/]
         Next[Next.js*]
+    end
+
+    subgraph Apps
+        MyApp[apps/my-app]
     end
 
     subgraph Config
