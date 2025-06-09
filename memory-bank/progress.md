@@ -205,6 +205,7 @@ Areas for pattern development:
 
 4. User Management
   * Added basic authentication endpoints with Prisma
+  * Introduced `package-lock.json` to support npm-based workflows
 
 3. Documentation
    * Memory Bank initialized as living documentation
