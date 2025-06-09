@@ -12,7 +12,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: ['/node_modules/'],
   verbose: true,
-  testMatch: ['**/tests/**/*.test.(ts|tsx|js)'],
+  testMatch: ['**/tests/**/*.(ts|tsx|js)'],
   transform: {
     '^.+\\.tsx?$': [
       'ts-jest',

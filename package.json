@@ -14,7 +14,7 @@
     "docker:down": "docker compose down",
     "lint": "pnpm -r lint",
     "format": "pnpm -r format",
-    "type-check": "pnpm -r type-check",
+    "type-check": "tsc --noEmit",
     "ci": "pnpm build && pnpm test && pnpm lint && pnpm type-check"
   },
   "keywords": [
