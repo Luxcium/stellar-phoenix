@@ -1,4 +1,4 @@
 // Jest setup file
-import '@types/jest';
+import '@jest/globals';
 
 // Global Jest configuration can go here
