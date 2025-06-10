@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { pbkdf2Sync } from 'crypto';
 import { SignJWT } from 'jose';
+import { verifyPassword } from '@/lib/auth';
 
 export async function POST(request: Request) {
   const { email, password } = await request.json();
@@ -12,15 +12,17 @@ export async function POST(request: Request) {
   if (!user) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
   }
-  const [salt, storedHash] = user.passwordHash.split(':');
-  const hash = pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
-  if (hash !== storedHash) {
+  if (!verifyPassword(password, user.passwordHash)) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+  }
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error('JWT_SECRET not set');
   }
   const token = await new SignJWT({ sub: user.id.toString() })
     .setProtectedHeader({ alg: 'HS256' })
     .setExpirationTime('1h')
-    .sign(new TextEncoder().encode(process.env.JWT_SECRET || 'secret'));
+    .sign(new TextEncoder().encode(secret));
   const response = NextResponse.json({ ok: true });
   response.cookies.set('token', token, { httpOnly: true, path: '/' });
   return response;

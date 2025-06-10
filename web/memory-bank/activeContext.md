@@ -17,6 +17,7 @@
 - Implemented Memory Bank monitoring for continuous context awareness
 - Documented development workflow in system patterns
 - Added basic login and registration pages with Prisma API
+- Introduced shared password hashing utilities
 
 ## Recent Changes
 

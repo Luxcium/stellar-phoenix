@@ -201,13 +201,14 @@ Areas for pattern development:
    * Result type implemented with clear patterns
    * Basic validation established with consistent approach
    * Testing utilities created with reusable patterns
- * Documentation integrated with type system
+   * Documentation integrated with type system
 
-4. User Management
-  * Added basic authentication endpoints with Prisma
-  * Introduced `package-lock.json` to support npm-based workflows
+3. User Management
+   * Added basic authentication endpoints with Prisma
+   * Introduced `package-lock.json` to support npm-based workflows
+   * Extracted password hashing into shared utility
 
-3. Documentation
+4. Documentation
    * Memory Bank initialized as living documentation
    * Project structure documented with clear patterns
    * Development guides started with practical focus

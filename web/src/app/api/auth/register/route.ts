@@ -1,24 +1,32 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { randomBytes, pbkdf2Sync } from 'crypto';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { hashPassword } from '@/lib/auth';
 
 export async function POST(request: Request) {
   const { email, password, name } = await request.json();
   if (!email || !password) {
     return NextResponse.json({ error: 'Email and password required' }, { status: 400 });
   }
-  const salt = randomBytes(16).toString('hex');
-  const hash = pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
   try {
     await prisma.user.create({
       data: {
         email,
         name,
-        passwordHash: `${salt}:${hash}`,
+        passwordHash: hashPassword(password),
       },
     });
     return NextResponse.json({ ok: true });
   } catch (error) {
+    if (
+      error instanceof PrismaClientKnownRequestError &&
+      error.code === 'P2002'
+    ) {
+      return NextResponse.json(
+        { error: 'Email already in use' },
+        { status: 409 }
+      );
+    }
     return NextResponse.json({ error: 'Unable to create user' }, { status: 500 });
   }
 }

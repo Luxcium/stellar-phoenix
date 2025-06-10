@@ -30,6 +30,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "tests/**/*"],
+  "include": ["src/**/*", "web/src/**/*", "tests/**/*"],
   "exclude": ["node_modules", "dist"]
 }
