@@ -1,5 +1,19 @@
 {
-  // Editor General Settings
+  // GitHub Copilot Chat Configuration
+  "chat.promptFiles": true,
+  "chat.promptFilesLocations": {
+    ".github/prompts": true
+  },
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true
+  },
+  "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+  // Agent-Specific Instructions
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": ".github/instructions/code-generation.instructions.md"
+    }
+  ], // Editor General Settings
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.rulers": [
@@ -37,7 +51,6 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.suggestionActions.enabled": true,
   "typescript.format.enable": false,
-  "typescript.surveys.enabled": false,
   "typescript.suggest.autoImports": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   // Jest Configuration
@@ -132,6 +145,9 @@
     ]
   ],
   "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   // Commented settings - uncomment if needed

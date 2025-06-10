@@ -1,0 +1,38 @@
+{
+  "Memory Bank Section": {
+    "prefix": "mbs",
+    "body": [
+      "## ${1:Section Title}",
+      "",
+      "${2:Section content goes here}",
+      "",
+      "---"
+    ],
+    "description": "Add a new section to a memory bank file"
+  },
+  "Memory Bank File Header": {
+    "prefix": "mbh",
+    "body": [
+      "# ${1:Title}",
+      "",
+      "## Overview",
+      "",
+      "${2:Overview content}",
+      "",
+      "---",
+      "",
+      "This document should be updated ${3:when to update}."
+    ],
+    "description": "Add a standard memory bank file header"
+  },
+  "Progress Item": {
+    "prefix": "mbp",
+    "body": [
+      "* ${1:Title}",
+      "  - Status: ${2|Completed,In Progress,Planned,Blocked|}",
+      "  - Details: ${3:Details}",
+      "  - Date: ${CURRENT_DATE}"
+    ],
+    "description": "Add a progress tracking item"
+  }
+}
