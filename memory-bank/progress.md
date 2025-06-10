@@ -40,6 +40,7 @@ Initial setup phase - Core infrastructure and type system foundation established
 5. Boot-Phase Automation
    * Minimal `genesis.sh` verifies dependencies and git status
    * Detects container environment automatically
+   * Regenerated `package-lock.json` for deterministic npm installs
 
 
 ## Emerging Patterns

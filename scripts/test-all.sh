@@ -41,7 +41,7 @@ pnpm test
 
 # Test Python code
 echo -e "\n${GREEN}Testing Python code...${NC}"
-cd python
+cd backend/python
 if [ ! -d ".venv" ]; then
   python -m venv .venv
   source .venv/bin/activate
@@ -50,7 +50,7 @@ else
   source .venv/bin/activate
 fi
 python -m pytest --cov=src --cov-report=html
-cd ..
+cd ../../
 
 # Generate and display coverage report
 echo -e "\n${GREEN}Generating coverage reports...${NC}"
