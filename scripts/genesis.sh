@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Minimal Genesis Boot-Phase Script
 # Location: /scripts/genesis.sh
 # Performs initial environment checks and setup
