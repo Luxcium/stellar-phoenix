@@ -1,0 +1,15 @@
+packages:
+  - apps/*
+  - backend
+  - packages/*
+  - web
+
+onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - cypress
+  - esbuild
+  - exifreader
+  - msgpackr-extract
+  - prisma
+  - sharp
