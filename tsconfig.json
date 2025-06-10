@@ -38,7 +38,7 @@
       "@jest/globals"
     ]
   },
-  "include": [
+  "include": ["src/**/*", "web/src/**/*", "tests/**/*",
     "backend/src/**/*",
     "backend/tests/**/*"
   ],

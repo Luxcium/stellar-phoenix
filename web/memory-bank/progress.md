@@ -7,6 +7,8 @@
 - Development server running on port 3001
 - Hot reload functionality active
 - Basic responsive layout implemented
+- Initial login and registration flow operational
+- Shared password hashing utilities added
 
 ## Current Development Status
 

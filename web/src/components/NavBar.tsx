@@ -9,6 +9,8 @@ export function NavBar() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Data Sources', href: '/data-sources' },
+    { name: 'Register', href: '/register' },
+    { name: 'Login', href: '/login' },
   ];
 
   return (

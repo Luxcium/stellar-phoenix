@@ -111,6 +111,9 @@ Project monorepo organization and Git synchronization:
    - Configure development environment
    - Establish build process
    - Implement testing infrastructure
+   - Introduce basic user authentication with Prisma
+   - Created shared password hashing utilities
+   - Added package-lock.json for deterministic npm installs
 
 2. Back Office Services
 
