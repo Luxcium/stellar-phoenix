@@ -209,3 +209,20 @@ $(detect_package_manager) install --save-dev @types/jest  # npm
 - Check for multiple lockfiles
 - Remove incorrect lockfiles
 - Use single package manager consistently
+
+## Genesis Boot Phase
+
+This minimal script ensures a consistent starting environment:
+
+1. Check for a `node_modules` folder.
+2. If missing, detect the package manager:
+   - `pnpm-lock.yaml` → pnpm
+   - `package-lock.json` or `npm-shrinkwrap.json` → npm
+   - `yarn.lock` → yarn
+   - When pnpm and `pnpm-workspace.yaml` are present, install with workspace support.
+3. Install dependencies via the detected manager.
+4. Verify `node_modules` exists and report success or failure.
+5. Detect container environment via `/.dockerenv` or `CI=true`.
+6. Validate the Git repository with `git rev-parse --is-inside-work-tree` and log status.
+
+Script location: `/scripts/genesis.sh`.

@@ -77,6 +77,10 @@ Project monorepo organization and Git synchronization:
    - Consistent file organization
    - Development script automation
    - Added new Next.js app under `apps/my-app`
+7. Genesis Boot Phase Script ✅
+   - Added `/scripts/genesis.sh` for initial boot checks
+   - Detects package manager, container environment, and git status
+
 
 ## Project Intelligence Growth
 

@@ -29,6 +29,7 @@ Initial setup phase - Core infrastructure and type system foundation established
    * Extension recommendations aligned with project needs
    * Debug configurations optimized
    * Task automation refined
+
    * Module resolution standardized
 
 4. Documentation
@@ -36,6 +37,10 @@ Initial setup phase - Core infrastructure and type system foundation established
    * Project documentation integrated with living memory
    * API documentation setup with consistent patterns
    * Example implementation started
+5. Boot-Phase Automation
+   * Minimal `genesis.sh` verifies dependencies and git status
+   * Detects container environment automatically
+
 
 ## Emerging Patterns
 

@@ -282,6 +282,18 @@ flowchart LR
 
    [Code examples]
    ```
+## Genesis Boot Phase Logic
+
+1. Check for a `node_modules` folder.
+2. If missing, detect package manager: `pnpm-lock.yaml` → pnpm, `package-lock.json` or `npm-shrinkwrap.json` → npm, `yarn.lock` → yarn.
+   - When using pnpm with `pnpm-workspace.yaml`, install with workspace support.
+3. Install dependencies using the detected manager.
+4. Verify `node_modules`; report success or failure.
+5. Detect container via `/.dockerenv` or `CI=true`.
+6. Validate Git repo with `git rev-parse --is-inside-work-tree` and log status.
+
+Script location: `/scripts/genesis.sh`.
+
 
 ## Data Flow
 
